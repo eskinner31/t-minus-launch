@@ -56,7 +56,19 @@ routes.addRoute('/home/register', (req, res, url) => {
       acum += chunk
     })
     req.on('end', function() {
-      var 
+      var data = qs.parse(acum)
+      users.insert(data, function(err, doc) {
+        if(err)res.end('something is wrong')
+        if(data.member){
+          req.session.put('userName', ['data.userName', 'true'])
+          res.writeHead(302, {'Location' : 'home/launch'})
+          res.end()
+        } else {
+          req.session.put('userName', ['data.userName', 'false'])
+          res.writeHead(302, {'Location' : 'home/weather'})
+          res.end()  
+        }
+      })
     })
   }
 })
