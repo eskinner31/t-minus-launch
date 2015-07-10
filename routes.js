@@ -31,11 +31,11 @@ routes.addRoute('/home', (req, res, url) => {
             res.end()
             return
           } else if (data.member) {
-            req.session.put('userName', 'data.userName')
+            req.session.put('userName', ['data.userName', 'true'])
             res.writeHead(302, {'Location' : 'home/launch'})
             res.end()
           } else {
-            req.session.put('userName', 'data.userName')
+            req.session.put('userName', ['data.userName', 'false'])
             res.writeHead(302, {'Location' : 'home/weather'})
             res.end()
           }
@@ -50,7 +50,35 @@ routes.addRoute('/home/register', (req, res, url) => {
     res.setHeader('Content-Type', 'text/html')
     var template = view.render('register')
     res.end(template)
+  } else {
+    var acum = ''
+    req.on('data', function(chunk) {
+      acum += chunk
+    })
+    req.on('end', function() {
+      
+    })
   }
+})
+
+routes.addRoute('/home/weather', (req, res, url) => {
+  if (req.session.get('userName')) {
+    var template = view.render('weather', {})
+    res.end(template)
+    return
+  }
+  res.writeHead(302, {'Location' : '/home/register'})
+  res.end()
+})
+
+routes.addRoute('/home/launch', (req, res, url) => {
+  if (req.session.get('userName') || req.session.get('true')) {
+    var template = view.render('lunch', {})
+    res.end(template)
+    return
+  }
+  res.writeHead(302, {'Location' : '/home/register'})
+  res.end()
 })
 
 routes.addRoute('/public/*', (req, res, url) => {
