@@ -1,0 +1,33 @@
+body {
+  background-image: url(http://astronaut.com/wp-content/uploads/2014/12/Screen-Shot-2014-12-11-at-8.30.17-AM.png);
+  background-size: cover;
+
+}
+
+.signIn {
+  float: left;
+  font-size: 30px;
+  color: #82CAFA
+
+}
+
+header {
+  font-size: 30px;
+  text-align: center;
+  color: #00FFFF;
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+.button {
+  width: 8em;  height: 3em;
+  color: black;
+  background: #EBF4FA;
+  font-weight: bold;
+  border: 1px solid black;
+
+}
+
+.button:hover {
+  color: #FFF;
+  background: #3BB9FF;
+}

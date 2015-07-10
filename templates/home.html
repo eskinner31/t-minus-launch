@@ -3,25 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <title>Home</title>
-  <link rel="stylesheet" href="/public/style.css">
+  <link rel="stylesheet" href="./../public/css/style.css">
 </head>
 <header>
   <h1>Space Launch</h1>
 </header>
 <body>
 
+<section class="signIn">
+  <h1>Sign In</h1>
   <form action="/home" method="post">
 
-    <label for="username">Username
+    <label for="username">Username:
       <input type="text" id="username">
-    </label>
+    </label><br>
 
-    <label for="password">Password
+    <label for="password">Password:
       <input type="text" id="password">
-    </label>
+    </label><br>
+
+    <button class ="button" type="submit">Register</button>
 
   </form>
-
+</section>
 
 
 </body>
