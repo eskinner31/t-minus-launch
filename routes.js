@@ -57,6 +57,9 @@ routes.addRoute('/home/register', (req, res, url) => {
     })
     req.on('end', function() {
       var data = qs.parse(acum)
+      if (data.member === "true"){
+        data.member = true
+      } else {data.member = false}
       users.insert(data, function(err, doc) {
         if(err)res.end('something is wrong')
         if(data.member){
@@ -66,7 +69,7 @@ routes.addRoute('/home/register', (req, res, url) => {
         } else {
           req.session.put('userName', ['data.userName', 'false'])
           res.writeHead(302, {'Location' : 'home/weather'})
-          res.end()  
+          res.end()
         }
       })
     })
@@ -85,7 +88,7 @@ routes.addRoute('/home/weather', (req, res, url) => {
 
 routes.addRoute('/home/launch', (req, res, url) => {
   if (req.session.get('userName') || req.session.get('true')) {
-    var template = view.render('lunch', {})
+    var template = view.render('launch', {})
     res.end(template)
     return
   }

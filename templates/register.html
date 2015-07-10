@@ -5,8 +5,26 @@
   <title>Document</title>
 </head>
 <body>
-  <form action="/home/register">
-     
+  <form action="/home/register" method="POST">
+     <h1>Register Here</h1>
+     <p>
+       <label for="userName">User Name</label>
+       <input type="text" name="userName">
+     </p>
+     <p>
+       <label for="userPassword">Password</label>
+       <input type="password" name="userPassword">
+     </p>
+     <p>
+       <label for="member">Are you part of teh team</label>
+       <label>Yes
+         <input type="radio" name="member" value='true' checked>
+       </label>
+        <label>No
+          <input type="radio" name="member" value='false'>
+        </label>
+     </p>
+     <input type="submit" value="Register">
   </form>
 </body>
 </html>
