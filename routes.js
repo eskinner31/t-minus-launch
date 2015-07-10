@@ -56,7 +56,7 @@ routes.addRoute('/home/register', (req, res, url) => {
       acum += chunk
     })
     req.on('end', function() {
-      
+      var 
     })
   }
 })
