@@ -40,4 +40,7 @@ routes.addRoute('/home', (req, res, url) => {
   }
 })
 
+routes.addRoute('/home/weather', (req, res, url) => {
+  
+})
 module.exports = routes
