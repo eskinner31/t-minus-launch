@@ -7,10 +7,10 @@ var routes = require('routes')(),
     mime = require('mime')
 
 routes.addRoute('/home', (req, res, url) => {
-  res.setHeader('Content-Type', 'text/html')
   if (req.method === "GET") {
-    var templates = view.render ('home', {})
-    res.end()
+    res.setHeader('Content-Type', 'text/html')
+    var templates = view.render('home', {})
+    res.end(templates)
   }
   if (req.method === "POST") {
     var acum = ''
@@ -30,17 +30,25 @@ routes.addRoute('/home', (req, res, url) => {
             res.writeHead(302, {'Location' : '/register'})
             res.end()
             return
+          } else if (data.member) {
+            req.session.put('userName', 'data.userName')
+            res.writeHead(302, {'Location' : 'home/launch'})
+            res.end()
+          } else {
+            req.session.put('userName', 'data.userName')
+            res.writeHead(302, {'Location' : 'home/weather'})
+            res.end()
           }
-          req.session.put('userName', 'data.userName')
-          res.writeHead(302, {'Location' : 'home/weather'})
-          res.end()
         })
       })
     })
   }
 })
 
-routes.addRoute('/home/weather', (req, res, url) => {
-  
+routes.addRoute('/home/register', (req, res, url) => {
+  if (req.method === "GET") {
+    res.setHeader('Content-Type', 'text/html')
+    var template = view.render('register')
+  }
 })
 module.exports = routes

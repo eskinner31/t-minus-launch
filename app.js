@@ -1,5 +1,5 @@
 var http = require('http'),
-    router = require('./router'),
+    router = require('./routes'),
     url = require('url'),
     mime = require('mime'),
     NodeSession = require('node-session'),
